@@ -27,3 +27,7 @@ std::vector<Point> Circle::get_circumference_points()
     return _circumferencePoints; 
 }
 
+void Circle::set_circumference_points(std::vector<Point> value)
+{
+    _circumferencePoints = value;
+}

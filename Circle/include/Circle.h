@@ -19,6 +19,7 @@ class Circle
         double get_h();
         double get_k();
         std::vector<Point> get_circumference_points();
+        void set_circumference_points(std::vector<Point> value);
 
 };
 

@@ -1,4 +1,6 @@
 #include "Circle.h"
+#include "Point.h"
+#include <vector>
 
 class CircleBuilder
 {
@@ -11,7 +13,9 @@ class CircleBuilder
             IV
         };
         
-        bool build_quadrant(quadrantType q, Circle& circle);
+        void build_quadrant(
+                quadrantType q, Circle circle, std::vector<Point>& quadrantArc);
+        void insert_quadrant_points(Circle& circle, std::vector<Point> quadrantArc);
         double get_x(int theta, double r);
         double get_y(int theta, double r);
         double transform_x_for_quadrant(double x, quadrantType q);
@@ -24,5 +28,5 @@ class CircleBuilder
     public:
         CircleBuilder() { };
 
-        bool build(double r, double h, double k);
+        Circle build(double r, double h, double k);
 };

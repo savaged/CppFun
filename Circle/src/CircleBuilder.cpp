@@ -1,25 +1,30 @@
 #include "CircleBuilder.h"
-#include "Circle.h"
-#include <iostream>
+#include <stdexcept>
 #define _USE_MATH_DEFINES
 #include <cmath>
 
-bool CircleBuilder::build(double r, double h, double k)
+Circle CircleBuilder::build(double r, double h, double k)
 {
+    std::vector<Point> quadrantArc;
     Circle circle(r, h, k);
 
     for (int i = CircleBuilder::I; i <= CircleBuilder::IV; i++)
     {
-        bool result = build_quadrant((CircleBuilder::quadrantType)i, circle);
-        if (!result)
-        {
-            return false;
-        }
+        build_quadrant((CircleBuilder::quadrantType)i, circle, quadrantArc);
+        insert_quadrant_points(circle, quadrantArc);
     }
-    return true;
+    return circle;
 }
 
-bool CircleBuilder::build_quadrant(CircleBuilder::quadrantType q, Circle& circle)
+void CircleBuilder::insert_quadrant_points(Circle& circle, std::vector<Point> quadrantArc)
+{
+    std::vector<Point> cp = circle.get_circumference_points();
+    cp.insert(cp.end(), quadrantArc.begin(), quadrantArc.end());
+    circle.set_circumference_points(cp);
+}
+
+void CircleBuilder::build_quadrant(
+        CircleBuilder::quadrantType q, Circle circle, std::vector<Point>& quadrantArc)
 {
     double r = circle.get_r();
     double h = circle.get_h();
@@ -40,21 +45,22 @@ bool CircleBuilder::build_quadrant(CircleBuilder::quadrantType q, Circle& circle
             x = shift_x_for_center(x, h);
             y = shift_y_for_center(y, k);
 
-            std::cout << x << ", " <<  y << std::endl;
+            Point p(x, y);
+            quadrantArc.push_back(p);
         }
         else
         {
-            std::cout << x << ", " << y << " <- Error: Out of range!" << std::endl;
-            return false;
+            throw std::out_of_range("Oof!");
         }
     }
-    return true;
 }
 
 double CircleBuilder::get_x(int theta, double r)
 {
     if (!is_in_domain(theta)) 
-        return (double)-1;
+    {
+        throw std::domain_error("X Oow!");
+    }
 
     double sinResultInDegrees, value;
 
@@ -68,8 +74,9 @@ double CircleBuilder::get_x(int theta, double r)
 double CircleBuilder::get_y(int theta, double r)
 {
     if (!is_in_domain(theta)) 
-        return (double)-1;
-
+    {
+        throw std::domain_error("Y Oow!");
+    }
     double cosResultInDegrees, value;
 
     cosResultInDegrees = cos(theta * (M_PI / 180.0));
