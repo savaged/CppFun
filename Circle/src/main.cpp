@@ -1,22 +1,25 @@
+#include "Circle.h"
+#include "CircleBuilder.h"
+#include "CirclePresenter.h"
 #include <iostream>
 #include <cstdlib>
 #include <stdexcept>
-#include "CircleBuilder.h"
 
 int main() 
 {
     CircleBuilder cb;
-
+    Circle circle;
     try
     {
-        Circle circle = cb.build(5, 3, 2);
+        circle = cb.build(5, 3, 2);
     }
     catch (const std::exception& e)
     {
         std::cerr << e.what();
         std::exit(EXIT_FAILURE);
     }
-    // TODO present circle
-    
+    CirclePresenter cp;
+    cp.show(circle);
+
     std::exit(EXIT_SUCCESS);
 }

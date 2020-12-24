@@ -1,8 +1,8 @@
 #ifndef CIRCLE_H
 #define CIRCLE_H
 
-#include <vector>
 #include "Point.h"
+#include <vector>
 
 class Circle
 {
@@ -13,6 +13,7 @@ class Circle
         std::vector<Point> _circumferencePoints;
     
     public:
+        Circle() { _r = 0; _h = 0; _k = 0; }
         Circle(double r, double h, double k);
     
         double get_r();

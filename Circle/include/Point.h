@@ -9,8 +9,8 @@ class Point
     public:
         Point(double x, double y);
 
-        double getX() { return _x; }
-        double getY() { return _y; }
+        double get_x();
+        double get_y();
 };
 
 #endif
