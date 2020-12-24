@@ -1,8 +1,8 @@
 # Reference1: http://www.cs.colby.edu/maxwell/courses/tutorials/maketutor/
 # Reference2: https://hiltmon.com/blog/2013/07/03/a-simple-c-plus-plus-project-structure/ 
 
-TARGET = bin/hello.app
 CC = g++
+BINDIR = bin
 SRCDIR = src
 OBJDIR = obj
 INCDIR = include
@@ -13,7 +13,10 @@ CFLAGS = -g # -Wall
 LIB = -lm
 INC = -I $(INCDIR)
 
+TARGET = $(BINDIR)/hello.app
+
 $(TARGET): $(OBJECTS)
+	@mkdir -p $(BINDIR)
 	$(CC) $^ -o $(TARGET) $(LIB)
 
 $(OBJDIR)/%.o: $(SRCDIR)/%.$(SRCEXT)
