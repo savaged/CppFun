@@ -1,24 +1,44 @@
-#include "circle.h"
+#include "CircleBuilder.h"
+#include "Circle.h"
 #include <iostream>
 #define _USE_MATH_DEFINES
 #include <cmath>
 
-bool output_quadrant(quadrantType q)
+bool CircleBuilder::build(double r, double h, double k)
 {
+    Circle circle(r, h, k);
+
+    for (int i = CircleBuilder::I; i <= CircleBuilder::IV; i++)
+    {
+        bool result = build_quadrant((CircleBuilder::quadrantType)i, circle);
+        if (!result)
+        {
+            return false;
+        }
+    }
+    return true;
+}
+
+bool CircleBuilder::build_quadrant(CircleBuilder::quadrantType q, Circle& circle)
+{
+    double r = circle.get_r();
+    double h = circle.get_h();
+    double k = circle.get_k();
+
     for (int i = 0; i <= 90; i++)
     {
         double x, y;
 
-        x = get_x(i);
-        y = get_y(i);
+        x = get_x(i, r);
+        y = get_y(i, r);
         
-        if (is_in_range(x) && is_in_range(y))
+        if (is_in_range(x, r) && is_in_range(y, r))
         {
             x = transform_x_for_quadrant(x, q);
             y = transform_y_for_quadrant(y, q);
             
-            x = shift_x_for_center(x);
-            y = shift_y_for_center(y);
+            x = shift_x_for_center(x, h);
+            y = shift_y_for_center(y, k);
 
             std::cout << x << ", " <<  y << std::endl;
         }
@@ -31,7 +51,7 @@ bool output_quadrant(quadrantType q)
     return true;
 }
 
-double get_x(int theta)
+double CircleBuilder::get_x(int theta, double r)
 {
     if (!is_in_domain(theta)) 
         return (double)-1;
@@ -40,12 +60,12 @@ double get_x(int theta)
 
     sinResultInDegrees = sin(theta * (M_PI / 180.0));
 
-    value = sinResultInDegrees * R;
+    value = sinResultInDegrees * r;
     
     return value;
 }
 
-double get_y(int theta)
+double CircleBuilder::get_y(int theta, double r)
 {
     if (!is_in_domain(theta)) 
         return (double)-1;
@@ -54,12 +74,12 @@ double get_y(int theta)
 
     cosResultInDegrees = cos(theta * (M_PI / 180.0));
 
-    value = cosResultInDegrees * R;
+    value = cosResultInDegrees * r;
 
     return value;
 }
 
-double transform_x_for_quadrant(double x, quadrantType q)
+double CircleBuilder::transform_x_for_quadrant(double x, quadrantType q)
 {
     double value = 0;
     switch (q)
@@ -76,7 +96,7 @@ double transform_x_for_quadrant(double x, quadrantType q)
     return value;
 }
 
-double transform_y_for_quadrant(double y, quadrantType q)
+double CircleBuilder::transform_y_for_quadrant(double y, quadrantType q)
 {
     double value = 0;
     switch (q)
@@ -93,31 +113,31 @@ double transform_y_for_quadrant(double y, quadrantType q)
     return value;
 }
 
-double shift_x_for_center(double x)
+double CircleBuilder::shift_x_for_center(double x, double h)
 {
     double value = 0;
-    value = x - H;
+    value = x - h;
     return value;
 }
 
-double shift_y_for_center(double y)
+double CircleBuilder::shift_y_for_center(double y, double k)
 {
     double value = 0;
-    value = y - K;
+    value = y - k;
     return value;
 }
 
-bool is_in_domain(int theta)
+bool CircleBuilder::is_in_domain(int theta)
 {
     bool value;
     value = (theta >= 0 && theta <= 90);
     return value;
 }
 
-bool is_in_range(double item)
+bool CircleBuilder::is_in_range(double item, double r)
 {
     bool value;
-    value = (item >= 0 && item <= R);
+    value = (item >= 0 && item <= r);
     return value;
 }
 

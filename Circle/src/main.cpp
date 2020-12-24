@@ -1,19 +1,18 @@
 #include <iostream>
 #include <cstdlib>
-#include "circle.h"
+#include "CircleBuilder.h"
 
 int main() 
 {
     bool result = false;
+    
+    CircleBuilder cb;
 
-    for (int i = I; i <= IV; i++)
+    result = cb.build(5, 3, 2);
+
+    if (!result)
     {
-        result = output_quadrant((quadrantType)i);
-
-        if (!result)
-        {
-            std::exit(EXIT_FAILURE);
-        }
+        std::exit(EXIT_FAILURE);
     }
     std::exit(EXIT_SUCCESS);
 }

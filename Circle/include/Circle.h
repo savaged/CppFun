@@ -11,15 +11,15 @@ class Circle
         double _h;
         double _k;
         std::vector<Point> _circumferencePoints;
-
     
     public:
         Circle(double r, double h, double k);
     
-        double getR() { return _r; }
-        double getH() { return _h; }
-        double getK() { return _k; }
-        std::vector<Point> getCircumferencePoints() { return _circumferencePoints; }
+        double get_r();
+        double get_h();
+        double get_k();
+        std::vector<Point> get_circumference_points();
+
 };
 
 #endif

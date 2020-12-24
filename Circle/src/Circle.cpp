@@ -7,3 +7,23 @@ Circle::Circle(double r, double h, double k)
     _k = k;
 }
 
+double Circle::get_r() 
+{ 
+    return _r;
+}
+
+double Circle::get_h() 
+{
+    return _h;
+}
+
+double Circle::get_k() 
+{
+    return _k;
+}
+
+std::vector<Point> Circle::get_circumference_points() 
+{
+    return _circumferencePoints; 
+}
+
