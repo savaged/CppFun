@@ -2,11 +2,12 @@
 # Reference2: https://hiltmon.com/blog/2013/07/03/a-simple-c-plus-plus-project-structure/ 
 
 CC = g++
+SRCEXT = cpp
+
 BINDIR = bin
 SRCDIR = src
 OBJDIR = obj
 INCDIR = include
-SRCEXT = cpp
 SOURCES = $(shell find $(SRCDIR) -type f -name *.$(SRCEXT))
 OBJECTS = $(patsubst $(SRCDIR)/%,$(OBJDIR)/%,$(SOURCES:.$(SRCEXT)=.o))
 CFLAGS = -g # -Wall
