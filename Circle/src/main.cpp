@@ -1,6 +1,7 @@
+#include "config.h"
 #include "Circle.h"
 #include "CircleBuilder.h"
-#include "CirclePresenter.h"
+#include "ConsoleCirclePresenter.h"
 #include <iostream>
 #include <cstdlib>
 #include <stdexcept>
@@ -11,14 +12,15 @@ int main()
     Circle circle;
     try
     {
-        circle = cb.build(5, 3, 2);
+        // R, H & K can be changed in include/config.h
+        circle = cb.build(R, H, K);
     }
     catch (const std::exception& e)
     {
         std::cerr << e.what();
         std::exit(EXIT_FAILURE);
     }
-    CirclePresenter cp;
+    ConsoleCirclePresenter cp;
     cp.show(circle);
 
     std::exit(EXIT_SUCCESS);

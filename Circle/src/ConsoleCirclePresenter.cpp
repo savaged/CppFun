@@ -1,10 +1,10 @@
-#include "CirclePresenter.h"
+#include "ConsoleCirclePresenter.h"
 #include "Point.h"
 #include <vector>
 #include <iostream>
 using namespace std;
 
-void CirclePresenter::show(Circle circle)
+void ConsoleCirclePresenter::show(Circle circle)
 {
     vector<Point> circumferencePoints = circle.get_circumference_points();
 

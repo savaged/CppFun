@@ -5,5 +5,5 @@ class CirclePresenter
     public:
         CirclePresenter() { };
 
-        void show(Circle circle);
+        virtual void show(Circle circle) = 0;
 };
