@@ -126,14 +126,14 @@ double CircleBuilder::transform_y_for_quadrant(double y, quadrantType q)
 double CircleBuilder::shift_x_for_center(double x, double h)
 {
     double value = 0;
-    value = x - h;
+    value = x + h;
     return value;
 }
 
 double CircleBuilder::shift_y_for_center(double y, double k)
 {
     double value = 0;
-    value = y - k;
+    value = y + k;
     return value;
 }
 
