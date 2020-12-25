@@ -14,7 +14,7 @@ SRC := $(wildcard $(SRCDIR)/*.$(SRCEXT))
 OBJ := $(patsubst $(SRCDIR)/%,$(OBJDIR)/%,$(SRC:.$(SRCEXT)=.o))
 INC := -I $(INCDIR)
 CXXFLAGS := -g -Wall -Wextra -Werror
-LDFLAGS := -lm
+LDFLAGS := -L/usr/lib -Llib
 
 TARGET = $(BINDIR)/hello-world.app
 
