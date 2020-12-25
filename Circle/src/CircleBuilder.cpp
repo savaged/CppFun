@@ -3,14 +3,14 @@
 #define _USE_MATH_DEFINES
 #include <cmath>
 
-Circle CircleBuilder::build(double r, double h, double k)
+Circle CircleBuilder::build(double r, double h, double k, int step = 1)
 {
     std::vector<Point> quadrantArc;
     Circle circle(r, h, k);
 
     for (int i = CircleBuilder::I; i <= CircleBuilder::IV; i++)
     {
-        build_quadrant((CircleBuilder::quadrantType)i, circle, quadrantArc);
+        build_quadrant((CircleBuilder::quadrantType)i, circle, quadrantArc, step);
         insert_quadrant_points(circle, quadrantArc);
     }
     return circle;
@@ -24,13 +24,16 @@ void CircleBuilder::insert_quadrant_points(Circle& circle, std::vector<Point> qu
 }
 
 void CircleBuilder::build_quadrant(
-        CircleBuilder::quadrantType q, Circle circle, std::vector<Point>& quadrantArc)
+        CircleBuilder::quadrantType q,
+        Circle circle,
+        std::vector<Point>& quadrantArc, 
+        int step)
 {
     double r = circle.get_r();
     double h = circle.get_h();
     double k = circle.get_k();
 
-    for (int i = 0; i <= 90; i++)
+    for (int i = 0; i <= 90; i = i + step)
     {
         double x, y;
 

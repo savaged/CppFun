@@ -13,7 +13,7 @@ int main()
     try
     {
         // R, H & K can be changed in include/config.h
-        circle = cb.build(R, H, K);
+        circle = cb.build(R, H, K, STEP);
     }
     catch (const std::exception& e)
     {

@@ -14,7 +14,7 @@ class CircleBuilder
         };
         
         void build_quadrant(
-                quadrantType q, Circle circle, std::vector<Point>& quadrantArc);
+                quadrantType q, Circle circle, std::vector<Point>& quadrantArc, int step);
         void insert_quadrant_points(Circle& circle, std::vector<Point> quadrantArc);
         double get_x(int theta, double r);
         double get_y(int theta, double r);
@@ -28,5 +28,5 @@ class CircleBuilder
     public:
         CircleBuilder() { };
 
-        Circle build(double r, double h, double k);
+        Circle build(double r, double h, double k, int step);
 };
