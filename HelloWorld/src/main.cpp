@@ -1,7 +1,8 @@
-#include "greeter.h"
+#include "StandardGreeter.h"
 
 int main() 
 {
-    greet();
+    StandardGreeter greeter;
+    greeter.greet();
     return 0;
 }

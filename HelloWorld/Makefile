@@ -14,7 +14,7 @@ CFLAGS = -g # -Wall
 LIB = -lm
 INC = -I $(INCDIR)
 
-TARGET = $(BINDIR)/hello.app
+TARGET = $(BINDIR)/hello-world.app
 
 $(TARGET): $(OBJECTS)
 	@mkdir -p $(BINDIR)

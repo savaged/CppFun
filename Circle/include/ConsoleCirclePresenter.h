@@ -6,6 +6,6 @@ class ConsoleCirclePresenter : public CirclePresenter
     public:
         ConsoleCirclePresenter() { };
 
-        void show(Circle circle);
+        void show(Circle circle) override;
 };
 
