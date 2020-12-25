@@ -16,7 +16,13 @@ Whilst this is designed for learning and fun it can be used to plot a circle.
 * Build: `make`
 * Graphing: `gnuplot` then `plot 'coords.csv' with lines` after running `plot > coords.csv`.
 
-## Configuration
+### Configuration
 
 * The R (radius), H & K (centre coordinates) are defined in the `include/config.h` file.
 
+
+## TODO
+
+* Fix h,k adjustment
+* Add gtkmm UI
+* Spin off another project to create a clock
