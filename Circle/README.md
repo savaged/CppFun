@@ -23,6 +23,5 @@ Whilst this is designed for learning and fun it can be used to plot a circle.
 
 ## TODO
 
-* Fix h,k adjustment
 * Add gtkmm UI
 * Spin off another project to create a clock
