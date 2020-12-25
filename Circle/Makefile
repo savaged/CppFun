@@ -1,30 +1,32 @@
 # Reference1: http://www.cs.colby.edu/maxwell/courses/tutorials/maketutor/
 # Reference2: https://hiltmon.com/blog/2013/07/03/a-simple-c-plus-plus-project-structure/ 
+# Reference3: http://www.partow.net/programming/makefile/index.html
 
-CC = g++
-SRCEXT = cpp
+CXX := g++
+SRCEXT := cpp
 
-BINDIR = bin
-SRCDIR = src
-OBJDIR = obj
-INCDIR = include
-SOURCES = $(shell find $(SRCDIR) -type f -name *.$(SRCEXT))
-OBJECTS = $(patsubst $(SRCDIR)/%,$(OBJDIR)/%,$(SOURCES:.$(SRCEXT)=.o))
-CFLAGS = -g # -Wall
-LIB = -lm
-INC = -I $(INCDIR)
+BINDIR := bin
+SRCDIR := src
+OBJDIR := obj
+INCDIR := include
+SRC := $(shell find $(SRCDIR) -type f -name *.$(SRCEXT))
+OBJ := $(patsubst $(SRCDIR)/%,$(OBJDIR)/%,$(SRC:.$(SRCEXT)=.o))
+INC := -I $(INCDIR)
+CXXFLAGS := -g -Wall -Wextra -Werror
+LDFLAGS := -lm
 
 TARGET = $(BINDIR)/circle.app
 
-$(TARGET): $(OBJECTS)
+$(TARGET): $(OBJ)
 	@mkdir -p $(BINDIR)
-	$(CC) $^ -o $(TARGET) $(LIB)
+	$(CXX) $(CXXFLAGS) -o $(TARGET) $^ $(LDFLAGS)
 
 $(OBJDIR)/%.o: $(SRCDIR)/%.$(SRCEXT)
 	@mkdir -p $(OBJDIR)
-	$(CC) $(CFLAGS) $(INC) -c -o $@ $<
+	$(CXX) $(CXXFLAGS) $(INC) -c $< -o $@ 
 
 clean:
-	@rm -r $(OBJDIR) $(TARGET)
+	-@rm -rvf $(OBJDIR)
+	-@rm -rvf $(TARGET)
 
 .PHONY: clean
