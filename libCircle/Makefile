@@ -13,7 +13,7 @@ OBJ := $(patsubst $(SRCDIR)/%,$(OBJDIR)/%,$(SRC:.$(SRCEXT)=.o))
 INC := -I $(INCDIR)
 CXXFLAGS := -g -Wall -Wextra -Werror
 
-TARGET = $(BINDIR)/lib_circle.a
+TARGET = $(BINDIR)/libcircle.a
 
 $(TARGET): $(OBJ)
 	@mkdir -p $(BINDIR)
