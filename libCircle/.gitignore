@@ -1,9 +1,0 @@
-# Ignore the build and lib directories
-obj/*
-lib/*
-
-# Ignore any executables
-bin/*
-
-# Ignore vim swap files
-*.swp
