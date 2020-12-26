@@ -2,6 +2,7 @@
 # Reference1: http://www.cs.colby.edu/maxwell/courses/tutorials/maketutor/
 # Reference2: https://hiltmon.com/blog/2013/07/03/a-simple-c-plus-plus-project-structure/ 
 # Reference3: http://www.partow.net/programming/makefile/index.html
+# Reference4: https://www.gnu.org/software/make/manual/make.html#toc-Overview-of-make
 
 SRCEXT := cpp
 
