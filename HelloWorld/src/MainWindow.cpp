@@ -4,7 +4,7 @@
 MainWindow::MainWindow()
     : m_button("Run Console Greeting")
 {
-    set_border_width(10);
+    set_border_width(100);
 
     m_button.signal_clicked().connect(sigc::mem_fun(
                 *this, &MainWindow::on_button_clicked));
