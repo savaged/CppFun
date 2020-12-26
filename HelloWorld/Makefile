@@ -13,8 +13,8 @@ INCDIR := include
 SRC := $(wildcard $(SRCDIR)/*.$(SRCEXT))
 OBJ := $(patsubst $(SRCDIR)/%,$(OBJDIR)/%,$(SRC:.$(SRCEXT)=.o))
 INC := -I $(INCDIR)
-CXXFLAGS := -g -Wall -Wextra -Werror
-LDFLAGS := -L/usr/lib -Llib
+CXXFLAGS := -g -Wall -Wextra -Werror `pkg-config gtkmm-3.0 --cflags`
+LDFLAGS := -L/usr/lib -Llib `pkg-config gtkmm-3.0 --libs`
 
 TARGET = $(BINDIR)/hello-world.app
 

@@ -1,8 +1,14 @@
 #include "StandardGreeter.h"
+#include "MainWindow.h"
+#include <gtkmm/main.h>
 
-int main() 
+int main(int argc, char *argv[]) 
 {
-    StandardGreeter greeter;
-    greeter.greet();
+    Gtk::Main kit(argc, argv);
+
+    MainWindow mainWindow;
+
+    Gtk::Main::run(mainWindow);
+
     return 0;
 }
