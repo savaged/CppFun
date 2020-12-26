@@ -1,4 +1,3 @@
-CXX := g++
 SRCEXT := cpp
 
 BINDIR := bin
@@ -8,14 +7,15 @@ INCDIR := include
 SRC := $(wildcard $(SRCDIR)/*.$(SRCEXT))
 OBJ := $(patsubst $(SRCDIR)/%,$(OBJDIR)/%,$(SRC:.$(SRCEXT)=.o))
 INC := -I $(INCDIR)
+LIBS := -L/usr/lib -Llib 
 CXXFLAGS := -g -Wall -Wextra -Werror `pkg-config gtkmm-3.0 --cflags`
-LDFLAGS := -L/usr/lib -Llib `pkg-config gtkmm-3.0 --libs`
+LDFLAGS := `pkg-config gtkmm-3.0 --libs`
 
 TARGET = $(BINDIR)/clock.app
 
 $(TARGET): $(OBJ)
 	@mkdir -p $(BINDIR)
-	$(CXX) $(CXXFLAGS) -o $(TARGET) $^ $(LDFLAGS)
+	$(CXX) $(CXXFLAGS) -o $(TARGET) $^ $(LIBS) $(LDFLAGS)
 
 $(OBJDIR)/%.o: $(SRCDIR)/%.$(SRCEXT)
 	@mkdir -p $(OBJDIR)
