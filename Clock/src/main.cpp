@@ -1,37 +1,19 @@
-#include "config.h"
-#include "Circle.h"
-#include "CircleBuilder.h"
-#include "MainWindow.h"
-#include "Canvas.h"
-#include <iostream>
-#include <cstdlib>
-#include <stdexcept>
+#include "Clock.h"
 #include <gtkmm/main.h>
+#include <gtkmm/window.h>
 
-int main(int argc, char *argv[]) 
+int main(int argc, char** argv)
 {
-    CircleBuilder cb;
-    Circle circle;
-    try
-    {
-        // R, H & K can be changed in include/config.h
-        circle = cb.build(R, H, K, STEP);
-    }
-    catch (const std::exception& e)
-    {
-        std::cerr << e.what();
-        std::exit(EXIT_FAILURE);
-    }
-    Gtk::Main kit(argc, argv);
+   Gtk::Main kit(argc, argv);
 
-    MainWindow mainWindow;
-    mainWindow.set_title("Clock");
+   Gtk::Window win;
+   win.set_title("Cairomm Clock");
 
-    Canvas canvas;
-    mainWindow.add(canvas);
-    canvas.show();
+   Clock c;
+   win.add(c);
+   c.show();
 
-    Gtk::Main::run(mainWindow);
+   Gtk::Main::run(win);
 
-    std::exit(EXIT_SUCCESS);
+   return 0;
 }
