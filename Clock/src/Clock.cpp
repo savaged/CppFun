@@ -43,7 +43,7 @@ bool Clock::on_draw(const Cairo::RefPtr<Cairo::Context>& cr)
   cr->stroke_preserve();
   cr->clip();
 
-  //clock ticks
+  //clock face marks (hour/minute indicators)
   for (int i = 0; i < 12; i++)
   {
     double inset = 0.05;
