@@ -32,12 +32,12 @@ bool Clock::on_draw(const Cairo::RefPtr<Cairo::Context>& cr)
   cr->set_line_width(m_line_width);
 
   cr->save();
-  cr->set_source_rgba(0.337, 0.612, 0.117, 0.9);   // green
+  cr->set_source_rgba(0.0, 0.0, 0.0, 0.5); // Background
   cr->paint();
   cr->restore();
   cr->arc(0, 0, m_radius, 0, 2 * M_PI);
   cr->save();
-  cr->set_source_rgba(1.0, 1.0, 1.0, 0.8);
+  cr->set_source_rgba(0.1, 0.1, 0.1, 0.8); // Clock face
   cr->fill_preserve();
   cr->restore();
   cr->stroke_preserve();
@@ -83,7 +83,7 @@ bool Clock::on_draw(const Cairo::RefPtr<Cairo::Context>& cr)
   // draw the seconds hand
   cr->save();
   cr->set_line_width(m_line_width / 3);
-  cr->set_source_rgba(0.7, 0.7, 0.7, 0.8); // gray
+  cr->set_source_rgba(0.7, 0.7, 0.7, 0.8); 
   cr->move_to(0, 0);
   cr->line_to(sin(seconds) * (m_radius * 0.9),
     -cos(seconds) * (m_radius * 0.9));
@@ -91,14 +91,14 @@ bool Clock::on_draw(const Cairo::RefPtr<Cairo::Context>& cr)
   cr->restore();
 
   // draw the minutes hand
-  cr->set_source_rgba(0.117, 0.337, 0.612, 0.9);   // blue
+  cr->set_source_rgba(0.337, 0.712, 0.117, 0.9);
   cr->move_to(0, 0);
   cr->line_to(sin(minutes + seconds / 60) * (m_radius * 0.8),
     -cos(minutes + seconds / 60) * (m_radius * 0.8));
   cr->stroke();
 
   // draw the hours hand
-  cr->set_source_rgba(0.337, 0.612, 0.117, 0.9);   // green
+  cr->set_source_rgba(0.337, 0.612, 0.117, 0.9);
   cr->move_to(0, 0);
   cr->line_to(sin(hours + minutes / 12.0) * (m_radius * 0.5),
     -cos(hours + minutes / 12.0) * (m_radius * 0.5));
