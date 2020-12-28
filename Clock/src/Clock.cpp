@@ -98,7 +98,7 @@ bool Clock::on_draw(const Cairo::RefPtr<Cairo::Context>& cr)
   cr->stroke();
 
   // draw the hours hand
-  cr->set_source_rgba(0.337, 0.612, 0.117, 0.9);
+  cr->set_source_rgba(0.337, 0.912, 0.117, 0.9);
   cr->move_to(0, 0);
   cr->line_to(sin(hours + minutes / 12.0) * (m_radius * 0.5),
     -cos(hours + minutes / 12.0) * (m_radius * 0.5));
