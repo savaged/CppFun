@@ -3,6 +3,8 @@
  * Wanted to emulate this `echo 'fooman@example.com' | tr 'A-Za-z' 'N-ZA-Mn-za-m'
  * and found some code that uses std::transform with a lambda on codereview.stackexchange
  *
+ * I could, of course, just use rot13 found in the bsdgames package.
+ *
  */
 
 #include <regex>
