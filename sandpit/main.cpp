@@ -24,12 +24,18 @@ public:
 class Derived : public Base
 {
     int _b;
+    int _c;
 public:
-    Derived(int a, int b) : Base(a), _b(b) { }
+    Derived(int a, int b, int c) : Base(a), _b(b), _c(c) { }
 
     int getB()
     {
         return _b;
+    }
+
+    int getC()
+    {
+        return _c;
     }
 };
 
@@ -41,10 +47,10 @@ void PrintA(Interface& object)
 int main()
 {
     Base b;
-    Derived d = Derived(1, 2);
+    Derived d = Derived(1, 2, 3);
 
     cout << b.getA() << endl;
-    cout << d.getA() << " " << d.getB() << endl;
+    cout << d.getA() << " " << d.getB() << " " << d.getC() << endl;
     
     PrintA(b);
     PrintA(d);
