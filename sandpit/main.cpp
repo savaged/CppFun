@@ -33,18 +33,18 @@ public:
     }
 };
 
-void PrintA(Interface* object)
+void PrintA(Interface& object)
 {
-    cout << object->getA() << endl;
+    cout << object.getA() << endl;
 }
 
 int main()
 {
-    Base* b = new Base();
-    Derived* d = new Derived(1, 2);
+    Base b;
+    Derived d = Derived(1, 2);
 
-    cout << b->getA() << endl;
-    cout << d->getA() << " " << d->getB() << endl;
+    cout << b.getA() << endl;
+    cout << d.getA() << " " << d.getB() << endl;
     
     PrintA(b);
     PrintA(d);
